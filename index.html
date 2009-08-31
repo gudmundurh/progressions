@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<head>
+	<title>Mandolin Chords</title>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+	<script type="text/javascript" src="chords.js"></script>
+</head>
+
+<body>
+
+	<canvas id="chord" width="200" height="200">
+	</canvas>
+
+	<script type="text/javascript">
+		$(function() {
+			var canvas = document.getElementById('chord');
+			var context = canvas.getContext('2d');
+			renderChord(context, new Chord('G', '0023'));
+		});
+	</script>
+</body>
+
