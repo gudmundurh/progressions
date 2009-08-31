@@ -1,0 +1,58 @@
+body {
+    font-family: verdana;
+}
+
+#main {
+    width: 500px;
+    margin: 100px auto 0;
+    background: yellow;
+    position: relative;
+}
+
+#chordName, #chordCanvas {
+    position: absolute;
+    top: 0;
+}
+
+#chordName {
+    font-size: 100px;
+    left: 0;
+    line-height: 142px;
+    width: 200px;
+}
+
+#chordName sup {
+    vertical-align: 24px;
+}
+
+#chordCanvas {
+    left: 150px;
+}
+
+#chordUpLink, #chordDownLink {
+    position: absolute;
+    width: 75px;
+    display: block;
+    text-align: center;
+    left: 0;
+    height: 10px;
+    opacity: .5;
+}
+
+#chordUpLink:hover, #chordDownLink:hover {
+    opacity: 1;
+}
+
+#chordUpLink span, #chordDownLink span {
+    display: none;
+}
+
+#chordUpLink {
+    top: 10px;
+    background: url(up.png) no-repeat center center;
+}
+
+#chordDownLink {
+    top: 130px;
+    background: url(down.png) no-repeat center center;
+}
