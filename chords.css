@@ -27,6 +27,7 @@ body {
 
 #chordCanvas {
     left: 150px;
+    border: 1px solid blue;
 }
 
 #chordUpLink, #chordDownLink {

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Chord database builder</title>
+	<script type="text/javascript" src="lib/jquery-1.3.2.min.js"></script>
+	<script type="text/javascript" src="scripts/progressions.js"></script>
+</head>
+<body>
+
+<pre id="output"></pre>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $.get('mandolin.txt', {}, function(data,textStatus) {
+            $('#output').text(buildDatabase(data));
+        });    
+    }); 
+    
+    function buildDatabase(chordSource) {
+        var chordLines = $.grep(chordSource.split(/\n+/), function(line) { return line.match(/\S/) });
+        var chords = $.map(chordLines, function(line) 
+        {
+            line = line.replace(/^\s*|\s*$/, '');
+            var parts = line.split(/\s+/);
+            
+            var chordName = ChordNameParser.parse(parts[0]);
+
+            return {
+                noteName: chordName.note.name,
+                modifier: chordName.modifier || '',
+                pattern: parts[1]            
+            };
+        });
+        
+        return $.map(chords, function(chord) 
+            {
+                return 'MandolinChordDb.addChordForm("' + chord.noteName + '", "' 
+                    + chord.modifier + '", "' + chord.pattern + '");';
+            }
+        ).join('\n');
+    }
+    
+    
+</script>
+
+</body>
+</html>
+
