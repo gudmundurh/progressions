@@ -148,10 +148,14 @@ Chord.prototype.getForms = function()
 
 
 
-var MandolinChordDb = 
+function ChordDatabase() 
 {
-    _forms: {},
-    
+    this._forms = {};
+}
+
+ 
+ChordDatabase.prototype = 
+{
     getChord: function(note) 
     {
         return new Chord(this, note);

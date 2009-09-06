@@ -1,3 +1,4 @@
+var MandolinChordDb = new ChordDatabase();
 MandolinChordDb.addChordForm("C", "", "0230");
 MandolinChordDb.addChordForm("C", "", "0233");
 MandolinChordDb.addChordForm("C#", "", "1341");
@@ -51,3 +52,4 @@ MandolinChordDb.addChordForm("G#", "m7", "1122");
 MandolinChordDb.addChordForm("C#", "m7", "4244");
 MandolinChordDb.addChordForm("F#", "m7", "2440");
 MandolinChordDb.addChordForm("B", "m7", "2022");
+

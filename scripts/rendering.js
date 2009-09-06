@@ -78,7 +78,7 @@ ChordRenderer.prototype._renderGrid = function(context, chordForm)
 	for (var i = 1; i <= this.stringCount; i++) 
 	{
 	    var y = this._getStringYCoordinate(i);
-	    context.line(0, y, highestFretX, y);
+	    context.line(-this.leftMargin, y, highestFretX, y);
 	}
 	
 	var fretHeight = Math.abs(this._getStringYCoordinate(1) - this._getStringYCoordinate(this.stringCount));
@@ -99,9 +99,10 @@ ChordRenderer.prototype._renderGrid = function(context, chordForm)
 
 ChordRenderer.prototype._renderBaseFretNumber = function(context, baseFretNumber)
 {
-    var x = this._getFingerCoordinates(1, 1).x;
+    var x = this._getFingerCoordinates(1, 1).x - 4;
     var y = this.canvas.height - this.bottomMargin / 2;
-    context.textBaseline = "middle";
+    //context.textBaseline = "middle";
+    context.font = "15px arial"
     context.fillText(baseFretNumber + 1, x, y)
 }
 

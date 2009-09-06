@@ -33,12 +33,13 @@
             };
         });
         
-        return $.map(chords, function(chord) 
+        return 'var MandolinChordDb = new ChordDatabase();\n' +
+            $.map(chords, function(chord) 
             {
                 return 'MandolinChordDb.addChordForm("' + chord.noteName + '", "' 
                     + chord.modifier + '", "' + chord.pattern + '");';
             }
-        ).join('\n');
+            ).join('\n');
     }
     
     
