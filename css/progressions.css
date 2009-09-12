@@ -14,3 +14,13 @@ ul#scales li {
     margin: 0 1em 0 0;
     padding: 0;
 }
+
+div.container {
+    position: relative;
+}
+
+#instruments {
+    position: absolute;
+    right: 50px;
+    top: 1em;
+}

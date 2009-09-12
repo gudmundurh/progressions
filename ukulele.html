@@ -2,14 +2,14 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>Mandolin chord progressions</title>
+	<title>Ukulele chord progressions</title>
 
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
 	<!--[if IE]><script src="lib/excanvas.compiled.js"></script><![endif]-->
 	<script type="text/javascript" src="scripts/rendering.js"></script>
 	<script type="text/javascript" src="scripts/progressions.js"></script>
+	<script type="text/javascript" src="scripts/ukuleledb.js"></script>
 	<script type="text/javascript" src="scripts/progressions.ui.js"></script>
-	<script type="text/javascript" src="chords/mandolindb.js"></script>
 	
 	<link rel="stylesheet" type="text/css" href="css/blueprint.css" media="screen, projection">
 	<link rel="stylesheet" type="text/css" href="css/progressions.css" media="screen, projection">
@@ -17,11 +17,11 @@
 
 <body>
     <div class="container">
-      <div id="instruments">
-        Other instruments: <a href="ukulele.html">Ukulele</a>
-      </div>
-
-        <h1>Mandolin chord progressions</h1>
+        <div id="instruments">
+          Other instruments: <a href="mandolin.html">Mandolin</a>
+        </div>
+      
+        <h1>Ukulele chord progressions</h1>
         
         <ul id="scales">
             <li>Scale:</li>
@@ -43,7 +43,7 @@
     
     <script type="text/javascript">
         $(function() {
-          Progressions.UI.init(MandolinChordDb);
+          Progressions.UI.init(UkuleleChordDb);
         });
     </script>
 </body>

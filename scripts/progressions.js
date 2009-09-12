@@ -69,7 +69,7 @@ var ChordNameParser =
 {
     parse: function(chordName) 
     {
-        var match = chordName.match(/^([ABCDEFG][b#]?)((?:m|maj|dim)?\d*)$/);
+        var match = chordName.match(/^([ABCDEFG][b#]?)((?:m|maj|dim|aug)?\d*)$/);
         
         if (!match) 
             throw new Error("ChordNameParser.parse: Could not parse chord '" + chordName + "'");
