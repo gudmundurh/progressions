@@ -1,0 +1,16 @@
+ul#scales {  
+    list-style-type: none;
+    overflow: auto;
+    margin-left: 0;
+    margin-top: 1.5em;
+}
+
+body {
+    margin-top: 1.5em;
+}
+
+ul#scales li {
+    float: left;
+    margin: 0 1em 0 0;
+    padding: 0;
+}

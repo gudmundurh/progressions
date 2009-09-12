@@ -7,39 +7,52 @@
 	<script type="text/javascript" src="scripts/progressions.js"></script>
 </head>
 <body>
+  
+<fieldset>
+  <legend>Chord database builder</legend>
+  <p>
+    Path to chord file: <input type="text" id="chordFileName" value="chords/"> (relative to this document)
+  </p>
+  <p>
+    Database name: <input type="text" id="databaseName"> (a valid JavaScript identifier)
+  </p>
+  <p>
+    <input type="button" value="Build" onclick="generateDatabase($('#chordFileName').val(), $('#databaseName').val());">
+  </p>
+</fieldset>
 
 <pre id="output"></pre>
 
 <script type="text/javascript">
-    $(document).ready(function() {
-        $.get('mandolin.txt', {}, function(data,textStatus) {
-            $('#output').text(buildDatabase(data));
-        });    
-    }); 
+  function generateDatabase(chordFileName, databaseName) {
+      $.get(chordFileName, {}, function(data,textStatus) {
+          $('#output').text(buildDatabase(data, databaseName));
+      });
+  }
     
-    function buildDatabase(chordSource) {
-        var chordLines = $.grep(chordSource.split(/\n+/), function(line) { return line.match(/\S/) });
-        var chords = $.map(chordLines, function(line) 
-        {
-            line = line.replace(/^\s*|\s*$/, '');
-            var parts = line.split(/\s+/);
-            
-            var chordName = ChordNameParser.parse(parts[0]);
+  function buildDatabase(chordSource, databaseName) {
+      var chordLines = $.grep(chordSource.split(/\n+/), function(line) { return line.match(/\S/) });
+      var chords = $.map(chordLines, function(line) 
+      {
+          line = line.replace(/^\s*|\s*$/, '');
+          var parts = line.split(/\s+/);
+          
+          var chordName = ChordNameParser.parse(parts[0]);
 
-            return {
-                noteName: chordName.note.name,
-                modifier: chordName.modifier || '',
-                pattern: parts[1]            
-            };
-        });
-        
-        return 'var MandolinChordDb = new ChordDatabase();\n' +
-            $.map(chords, function(chord) 
-            {
-                return 'MandolinChordDb.addChordForm("' + chord.noteName + '", "' 
-                    + chord.modifier + '", "' + chord.pattern + '");';
-            }
-            ).join('\n');
+          return {
+              noteName: chordName.note.name,
+              modifier: chordName.modifier || '',
+              pattern: parts[1]            
+          };
+      });
+      
+      return 'var ' + databaseName + ' = new ChordDatabase();\n' +
+          $.map(chords, function(chord) 
+          {
+              return databaseName + '.addChordForm("' + chord.noteName + '", "' 
+                  + chord.modifier + '", "' + chord.pattern + '");';
+          }
+          ).join('\n');
     }
     
     
