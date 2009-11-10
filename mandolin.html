@@ -4,7 +4,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title>Mandolin chord progressions</title>
 
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+	<script type="text/javascript" src="lib/jquery-1.3.2.min.js"></script>
 	<!--[if IE]><script src="lib/excanvas.compiled.js"></script><![endif]-->
 	<script type="text/javascript" src="scripts/rendering.js"></script>
 	<script type="text/javascript" src="scripts/progressions.js"></script>
@@ -50,3 +50,33 @@
     <!--#include file="tracking.inc"-->
 </body>
 </html>
+<!--
+Possible additions:
+    Global list of available instruments, could do something like:
+        
+        //                           ID          Database
+        Progressions.UI.addDatabase('mandolin', 'chords/mandolindb.js');
+        Progressions.UI.addDatabase('ukulele', 'chords/ukuleledb.js');
+        
+    To enable SEO-friendlyness, we add this:
+        
+        <ul class="instruments">
+            <li class="ukulele"><a href="progressions.html?ukulele">Ukulele</a></li>
+            <li class="mandolin"><a href="progressions.html?mandolin">Mandolin</a></li>
+        </ul>
+        
+    The .instruments list tells which instruments we have - not the "addDatabase" calls.
+    The latter is only for registering databases for known instruments.
+        
+    As last improvement implies, custom loading of .JS files
+    A "Please wait..." indication while UI is loaded
+    Hash-base URL parsing, as in
+    
+        progressions.html#/mandolin/g-sharp/
+        
+    Perhaps # and ? should be treated in the same way??
+    
+    Building UI with JS works against SEO... bad?
+    
+    Refactor ukulele.html and mandolin.html to use same HTML   
+-->

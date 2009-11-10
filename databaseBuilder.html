@@ -34,7 +34,7 @@
       var chordLines = $.grep(chordSource.split(/\n+/), function(line) { return line.match(/\S/) });
       var chords = $.map(chordLines, function(line) 
       {
-          line = line.replace(/^\s*|\s*$/, '');
+          line = $.trim(line);
           var parts = line.split(/\s+/);
           
           var chordName = ChordNameParser.parse(parts[0]);
@@ -53,11 +53,14 @@
                   + chord.modifier + '", "' + chord.pattern + '");';
           }
           ).join('\n');
-    }
-    
-    
+    }        
 </script>
 
 </body>
 </html>
-
+<!--
+Possible additions:
+    Templating language for JS (would require loop capabilities)
+    Error handling for $.get call
+    Array extensions used instead of $.grep and $.map
+-->
