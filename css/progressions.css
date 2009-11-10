@@ -3,17 +3,31 @@ ul#scales {
     overflow: auto;
     margin-left: 0;
     margin-top: 1.5em;
+    font-size: 1.5em;
+}
+
+ul#scales li {
+    line-height: 2em;
+    float: left;
+    margin: 0 .5em 0 0;
+    padding: 0;
+}
+
+ul#scales a {
+    padding: .7em .4em;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+ul#scales a:hover, ul#scales .selected {
+    background: #009;
+    color: #fff;
 }
 
 body {
     margin-top: 1.5em;
 }
 
-ul#scales li {
-    float: left;
-    margin: 0 1em 0 0;
-    padding: 0;
-}
 
 div.container {
     position: relative;

@@ -28,7 +28,12 @@ test("that flat notes return correct html formatting", function() {
 });
 */
 
+module('Note');
 
+test("Note ctor should set correct name", function() {
+    var note = new Note(2);
+    same(note.name, NOTE_NAMES[2])
+});
 
 
 module('Notes');

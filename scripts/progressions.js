@@ -24,6 +24,26 @@ Note.prototype.toString = function()
 };
 
 
+Note.prototype.getFormattedName = function() 
+{
+    // Flat:  U+266D (http://www.decodeunicode.org/de/u+266d)
+    // Sharp: U+266F
+    
+    if (this.name.length == 2 && this.name.charAt(1) == "#")
+        return this.name[0] + "&#x266f;";
+    
+    return this.name;
+};
+
+Note.prototype.getIdentifier = function() 
+{
+    if (this.name.length == 2 && this.name.charAt(1) == "#")
+        return this.name[0] + "sharp";
+    
+    return this.name;
+};
+
+
 var Notes = 
 {
     get: function(noteName) 
@@ -198,3 +218,14 @@ ChordDatabase.prototype =
 };
 
 
+/*
+Improvements:
+
+Rename from progressions.js to chords.js or chordDatabase.js
+
+    getMajorChordProgressions and getMinor... should be changed to something like
+        getChordProgresisons(baseNote, new ProgressionDefinition(0, 5, 7))
+    or e.g.
+        getChordProgresisons(baseNote, ProgressionDefinition.Major)
+    
+*/

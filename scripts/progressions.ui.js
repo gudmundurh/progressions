@@ -7,11 +7,13 @@ Progressions.UI = {
 
         $('#scales').append(
             $.map(Notes.getAll(), function(note) {
-                return '<li><a href="#' + note.name + '">' + note.name + '</a></li>' 
+                return '<li><a href="#' + note.name + '">' + note.getFormattedName() + '</a></li>' 
             }).join('')
         ).find('a').bind('click', function() {
-            drawMajorChordProgressions(this.href.substring(this.href.indexOf('#')+1));
-            drawMinorChordProgressions(this.href.substring(this.href.indexOf('#')+1));
+            var baseNote = getNoteNameFromLink(this);
+            drawMajorChordProgressions(baseNote);
+            drawMinorChordProgressions(baseNote);
+            setSelectedScale(baseNote);
         });
               
         function drawMajorChordProgressions(noteName) {
@@ -31,6 +33,17 @@ Progressions.UI = {
                 chordContainer.find('h2').html(chords[i].toString());
                 new ChordRenderer(chordContainer.find('canvas').get(0)).renderChord(chords[i].getForms()[0]);
             }
+        }
+        
+        function setSelectedScale(baseNote) {
+            $('#scales').find('a')
+                .removeClass('selected')
+                .filter(function() { return getNoteNameFromLink(this) == baseNote })
+                .addClass('selected');
+        }
+        
+        function getNoteNameFromLink(link) {
+            return link.href.substring(link.href.indexOf('#')+1);
         }
     
         function initChordContainer(containerId) {
@@ -57,6 +70,8 @@ Progressions.UI = {
                 baseNote = 'C';
             }
         }
+        
+        setSelectedScale(baseNote);
     
         drawMajorChordProgressions(baseNote);
         drawMinorChordProgressions(baseNote);
